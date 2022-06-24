@@ -1,0 +1,346 @@
+{
+  "event_id": "01G4YEC6ADXX2ECD67DJK7XG6K",
+  "event_type": "form_response",
+  "form_response": {
+    "form_id": "cBaOM123",
+    "token": "6na3ra5knj95yz2o7pqc6na3ral5xqhq",
+    "landed_at": "2022-06-07T06:41:12Z",
+    "submitted_at": "2022-06-07T06:42:01Z",
+    "definition": {
+      "id": "cBaOM123",
+      "title": "Waitlist",
+      "fields": [
+        {
+          "id": "alPYo6yB6MYP",
+          "ref": "b58791e0-8755-4858-b4fd-59161d725b65",
+          "type": "multiple_choice",
+          "title": "Which of these best describes what you need to automate?",
+          "properties": {},
+          "allow_multiple_selections": true,
+          "allow_other_choice": true,
+          "choices": [
+            {
+              "id": "v13t4B9lQQLe",
+              "label": "Scraping/navigating the web"
+            },
+            {
+              "id": "T6DMdtAGbL9L",
+              "label": "Connecting apps together"
+            },
+            {
+              "id": "Xl6HKZBMC2EO",
+              "label": "Automating data entry/spreadsheets"
+            },
+            {
+              "id": "vAuPLMOeV9lB",
+              "label": "Triggering a task manually at intervals"
+            },
+            {
+              "id": "9YNpqGCQhCie",
+              "label": "Fetching & monitoring data"
+            },
+            {
+              "id": "07ugTu6rz9So",
+              "label": "Custom internal dashboards"
+            },
+            {
+              "id": "cEJ0eOjrP8YU",
+              "label": "Platform bots"
+            }
+          ]
+        },
+        {
+          "id": "H6ytRXO0GXAc",
+          "ref": "12101441-e0cc-4faf-b4b7-6e36ca2abccb",
+          "type": "short_text",
+          "title": "Help us understand which applications/platforms you need automating. ",
+          "properties": {}
+        },
+        {
+          "id": "8tXg0WqToPKX",
+          "ref": "0e1d3d6b-fa92-4ce1-aed2-b71b61b99c00",
+          "type": "multiple_choice",
+          "title": "How often does it need to run?",
+          "properties": {},
+          "allow_other_choice": true,
+          "choices": [
+            {
+              "id": "qtCG8l1PtcKn",
+              "label": "Triggered manually"
+            },
+            {
+              "id": "ZFcsRPInoQ6d",
+              "label": "Repeated at fixed intervals (hourly/daily/weekly)"
+            },
+            {
+              "id": "1eX1tXV1HD3i",
+              "label": "Always listening (event-driven webhooks)"
+            }
+          ]
+        },
+        {
+          "id": "yEbLstmzOV6G",
+          "ref": "2641230b-c762-4dcc-8577-0c61734a3bec",
+          "type": "multiple_choice",
+          "title": "Where do you want it to run?",
+          "properties": {},
+          "allow_multiple_selections": true,
+          "allow_other_choice": true,
+          "choices": [
+            {
+              "id": "UBR5TTi1mP0Q",
+              "label": "Online Cloud"
+            },
+            {
+              "id": "82utplUbfAaW",
+              "label": "MacOS Desktop"
+            },
+            {
+              "id": "tfkQpio2XDA7",
+              "label": "Windows Desktop"
+            },
+            {
+              "id": "ZEJPViim8xMo",
+              "label": "Linux Desktop"
+            },
+            {
+              "id": "qBldbgr31szr",
+              "label": "IoT Device"
+            }
+          ]
+        },
+        {
+          "id": "SgTAbYkCbJOu",
+          "ref": "d00e15c7-df86-4349-baad-33de76f46674",
+          "type": "multiple_choice",
+          "title": "How quickly do you want this to be built? ",
+          "properties": {},
+          "allow_other_choice": true,
+          "choices": [
+            {
+              "id": "k3NT3FFFHE70",
+              "label": "< 1 day"
+            },
+            {
+              "id": "WZElTGOzNz23",
+              "label": "1-2 days"
+            },
+            {
+              "id": "qw5QYyo5TLne",
+              "label": "4-5 days"
+            },
+            {
+              "id": "UIqzWFFIuVDk",
+              "label": "> 1 week"
+            }
+          ]
+        },
+        {
+          "id": "NfSIFbhzHhn6",
+          "ref": "1b1b1824-977d-4504-b9c4-23fd69a153d0",
+          "type": "multiple_choice",
+          "title": "We're almost done! Any more details/context you wish to provide?",
+          "properties": {},
+          "choices": [
+            {
+              "id": "DHSxLBXKWRpL",
+              "label": "Yes, right away"
+            },
+            {
+              "id": "oBX6SB9czMLB",
+              "label": "Maybe later"
+            }
+          ]
+        },
+        {
+          "id": "FitRKy96URLd",
+          "ref": "6d1859b2-68b6-4d05-adc2-0b69253219af",
+          "type": "email",
+          "title": "What is the email you use for work? \\*",
+          "properties": {}
+        },
+        {
+          "id": "C0wX1xfLOIcb",
+          "ref": "c1c589b2-0a83-4ce0-bc8d-7110d282d266",
+          "type": "multiple_choice",
+          "title": "Which best aligns with the kind of job or role you have?",
+          "properties": {},
+          "allow_other_choice": true,
+          "choices": [
+            {
+              "id": "b9pafsBuAivf",
+              "label": "Founder"
+            },
+            {
+              "id": "dGKB7A7O1mwt",
+              "label": "Product / Engineering / Data Science"
+            },
+            {
+              "id": "U8oALC6p22qS",
+              "label": "Leadership / Executive / Investor"
+            },
+            {
+              "id": "4YAQZq9hjuOw",
+              "label": "Sales / Customer success / Biz Dev"
+            },
+            {
+              "id": "2mWGmGo5VY83",
+              "label": "Marketing / Advertising"
+            },
+            {
+              "id": "sXuoPQAoqIA0",
+              "label": "Design / Creative"
+            },
+            {
+              "id": "zmPzRVcDjzOy",
+              "label": "Finance / Strategy / Operations"
+            },
+            {
+              "id": "pBY5cPg9WPKZ",
+              "label": "HR / People operations"
+            },
+            {
+              "id": "rKB6SXVY5Gpb",
+              "label": "Student"
+            }
+          ]
+        },
+        {
+          "id": "JWzFKVu8uSiS",
+          "ref": "3dce5ba6-801b-4293-a87c-b19deac7345e",
+          "type": "multiple_choice",
+          "title": "How big is your team?",
+          "properties": {},
+          "choices": [
+            {
+              "id": "JBqZUOLSrHFL",
+              "label": "Just me"
+            },
+            {
+              "id": "M1zz9e1mSmLy",
+              "label": "1-10 members"
+            },
+            {
+              "id": "AxtavV2pIB52",
+              "label": "10-50 members"
+            },
+            {
+              "id": "LLquqj5niH8j",
+              "label": "50-100 members"
+            },
+            {
+              "id": "FKnYip2vhVuQ",
+              "label": "100-500 members"
+            },
+            {
+              "id": "NmQkCYlYgkWQ",
+              "label": "> 500 members"
+            }
+          ]
+        }
+      ]
+    },
+    "answers": [
+      {
+        "type": "choices",
+        "choices": {
+          "labels": [
+            "Scraping/navigating the web",
+            "Connecting apps together"
+          ]
+        },
+        "field": {
+          "id": "alPYo6yB6MYP",
+          "type": "multiple_choice",
+          "ref": "b58791e0-8755-4858-b4fd-59161d725b65"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Reddit, Github",
+        "field": {
+          "id": "H6ytRXO0GXAc",
+          "type": "short_text",
+          "ref": "12101441-e0cc-4faf-b4b7-6e36ca2abccb"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "label": "Triggered manually"
+        },
+        "field": {
+          "id": "8tXg0WqToPKX",
+          "type": "multiple_choice",
+          "ref": "0e1d3d6b-fa92-4ce1-aed2-b71b61b99c00"
+        }
+      },
+      {
+        "type": "choices",
+        "choices": {
+          "labels": [
+            "Online Cloud"
+          ]
+        },
+        "field": {
+          "id": "yEbLstmzOV6G",
+          "type": "multiple_choice",
+          "ref": "2641230b-c762-4dcc-8577-0c61734a3bec"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "label": "> 1 week"
+        },
+        "field": {
+          "id": "SgTAbYkCbJOu",
+          "type": "multiple_choice",
+          "ref": "d00e15c7-df86-4349-baad-33de76f46674"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "label": "Maybe later"
+        },
+        "field": {
+          "id": "NfSIFbhzHhn6",
+          "type": "multiple_choice",
+          "ref": "1b1b1824-977d-4504-b9c4-23fd69a153d0"
+        }
+      },
+      {
+        "type": "email",
+        "email": "sib@sib.com",
+        "field": {
+          "id": "FitRKy96URLd",
+          "type": "email",
+          "ref": "6d1859b2-68b6-4d05-adc2-0b69253219af"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "label": "Product / Engineering / Data Science"
+        },
+        "field": {
+          "id": "C0wX1xfLOIcb",
+          "type": "multiple_choice",
+          "ref": "c1c589b2-0a83-4ce0-bc8d-7110d282d266"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "label": "1-10 members"
+        },
+        "field": {
+          "id": "JWzFKVu8uSiS",
+          "type": "multiple_choice",
+          "ref": "3dce5ba6-801b-4293-a87c-b19deac7345e"
+        }
+      }
+    ]
+  }
+}
