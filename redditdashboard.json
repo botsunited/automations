@@ -1,0 +1,584 @@
+[
+  {
+    "id": "619d147b.6d0aac",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": "",
+    "_def": {
+      "defaults": {
+        "label": {
+          "value": ""
+        },
+        "disabled": {
+          "value": false
+        },
+        "info": {
+          "value": ""
+        }
+      }
+    },
+    "in": [],
+    "out": [],
+    "module": null,
+    "version": null
+  },
+  {
+    "valid": true,
+    "id": "fc00acbab006bedd",
+    "type": "ui_tab",
+    "name": "Home",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false,
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "3da962db82da2448",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-light",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#0094CE",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#097479",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "customTheme": {
+        "name": "Untitled Theme 1",
+        "default": "#4B7930",
+        "baseColor": "#4B7930",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#0094CE",
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#fafafa",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#1bbfff",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#0094ce",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "base-font": {
+          "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+        }
+      },
+      "angularTheme": {
+        "primary": "indigo",
+        "accents": "blue",
+        "warn": "red",
+        "background": "grey",
+        "palette": "light"
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "lockMenu": "false",
+      "allowTempTheme": "true",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    },
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "c7ef88c9edd7378c",
+    "type": "ui_group",
+    "name": "Default",
+    "tab": "fc00acbab006bedd",
+    "order": 1,
+    "disp": true,
+    "width": "12",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "0d7b76cb0273f8ba",
+    "type": "reddit-credentials",
+    "username": "lightningmayonnaise",
+    "user_agent": "lightningmayonnaise",
+    "auth_type": "username_password",
+    "name": "",
+    "module": "node-red-contrib-node-reddit",
+    "version": "1.0.11"
+  },
+  {
+    "valid": true,
+    "id": "e51c90d55bf04306",
+    "type": "ui_group",
+    "name": "ButtonGroup",
+    "tab": "fc00acbab006bedd",
+    "order": 2,
+    "disp": true,
+    "width": "6",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "9f99d58133592a9f",
+    "type": "search",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "reddit": "0d7b76cb0273f8ba",
+    "subreddit": "all",
+    "query": "manga",
+    "time": "hour",
+    "sort": "relevance",
+    "x": 303,
+    "y": 213,
+    "wires": [
+      [
+        "4564521309d4b110"
+      ]
+    ],
+    "module": "node-red-contrib-node-reddit",
+    "version": "1.0.11"
+  },
+  {
+    "valid": true,
+    "id": "8c0e386681208d55",
+    "type": "inject",
+    "z": "619d147b.6d0aac",
+    "name": "Inject",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payloadType": "date",
+    "x": 123,
+    "y": 173,
+    "wires": [
+      [
+        "9f99d58133592a9f"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "4564521309d4b110",
+    "type": "change",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "post.permalink",
+        "pt": "msg",
+        "to": "payload.permalink",
+        "tot": "msg"
+      },
+      {
+        "t": "set",
+        "p": "post.url",
+        "pt": "msg",
+        "to": "payload.url",
+        "tot": "msg"
+      },
+      {
+        "t": "set",
+        "p": "post.id",
+        "pt": "msg",
+        "to": "payload.id",
+        "tot": "msg"
+      },
+      {
+        "t": "set",
+        "p": "post.subreddit",
+        "pt": "msg",
+        "to": "payload.subreddit",
+        "tot": "msg"
+      },
+      {
+        "t": "set",
+        "p": "post.selftext",
+        "pt": "msg",
+        "to": "payload.selftext",
+        "tot": "msg"
+      },
+      {
+        "t": "set",
+        "p": "post.full",
+        "pt": "msg",
+        "to": "payload",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 520,
+    "y": 200,
+    "wires": [
+      [
+        "dd8a64c0e39a2895",
+        "83d5013060252758"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "ce4b75ac96c5e147",
+    "type": "ui_table",
+    "z": "619d147b.6d0aac",
+    "group": "c7ef88c9edd7378c",
+    "name": "",
+    "order": 1,
+    "width": "10",
+    "height": "11",
+    "columns": [
+      {
+        "field": "permalink",
+        "title": "Permalink",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "url",
+        "title": "URL",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "subreddit",
+        "title": "Subreddit",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "selftext",
+        "title": "Content",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "id",
+        "title": "ID",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 490,
+    "y": 560,
+    "wires": [
+      [
+        "ca5ecf642af662e5",
+        "fd10e2836313a58f",
+        "e330edfd6c1a98f2",
+        "f5494ee8604aaadd"
+      ]
+    ],
+    "module": "node-red-node-ui-table",
+    "version": "0.3.12"
+  },
+  {
+    "valid": true,
+    "id": "83d5013060252758",
+    "type": "join",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "2",
+    "count": "",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 508.0761450906705,
+    "y": 359.9595447148635,
+    "wires": [
+      [
+        "ce4b75ac96c5e147",
+        "da57281a93b97cae"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "4b1a4b729faa087b",
+    "type": "ui_button",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "group": "e51c90d55bf04306",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "label": "REFRESH",
+    "tooltip": "",
+    "color": "#fff",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "str",
+    "topic": "topic",
+    "topicType": "msg",
+    "x": 93,
+    "y": 233,
+    "wires": [
+      [
+        "9f99d58133592a9f"
+      ]
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "ca5ecf642af662e5",
+    "type": "ui_text",
+    "z": "619d147b.6d0aac",
+    "group": "e51c90d55bf04306",
+    "order": 1,
+    "width": "6",
+    "height": "7",
+    "name": "",
+    "label": "ID : ",
+    "format": "{{msg.payload.selftext}}",
+    "layout": "row-right",
+    "className": "",
+    "x": 770,
+    "y": 620,
+    "wires": [],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "fd10e2836313a58f",
+    "type": "ui_text",
+    "z": "619d147b.6d0aac",
+    "group": "e51c90d55bf04306",
+    "order": 1,
+    "width": "6",
+    "height": "2",
+    "name": "",
+    "label": "",
+    "format": "{{msg.payload.url}}",
+    "layout": "row-right",
+    "className": "",
+    "x": 750,
+    "y": 580,
+    "wires": [],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "dd8a64c0e39a2895",
+    "type": "debug",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "post",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 864.2210926158879,
+    "y": 172.21078975730583,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "e330edfd6c1a98f2",
+    "type": "change",
+    "z": "619d147b.6d0aac",
+    "name": "Set Selected Post",
+    "rules": [
+      {
+        "t": "set",
+        "p": "selected",
+        "pt": "flow",
+        "to": "payload.id",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 727.2944665413977,
+    "y": 455.75133708542046,
+    "wires": [
+      []
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "f5494ee8604aaadd",
+    "type": "ui_text",
+    "z": "619d147b.6d0aac",
+    "group": "e51c90d55bf04306",
+    "order": 1,
+    "width": "6",
+    "height": "2",
+    "name": "",
+    "label": "",
+    "format": "{{msg.payload.id}}",
+    "layout": "row-right",
+    "className": "",
+    "x": 750,
+    "y": 540,
+    "wires": [],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "da57281a93b97cae",
+    "type": "debug",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 961.0135703556728,
+    "y": 381.9139960862122,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "72709be4bf7be50a",
+    "type": "bot-info",
+    "z": "619d147b.6d0aac",
+    "name": "Reddit Search ",
+    "title": "Reddit Search Dashboard",
+    "description": "A reddit search dashboard that shows searches all of reddit for term in the past hour/day/week..etc.",
+    "created": "June 24, 2022",
+    "timestamp": 1656090370303,
+    "compatibility": [
+      {
+        "label": "Maya Cloud",
+        "value": "cloud"
+      }
+    ],
+    "developer": "manias_leakers0b@icloud.com",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 492.5733420293179,
+    "y": -53.306093446112904,
+    "wires": [],
+    "module": "maya-red-bot-utils"
+  }
+]
