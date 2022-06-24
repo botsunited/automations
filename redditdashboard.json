@@ -564,7 +564,7 @@
     "z": "619d147b.6d0aac",
     "name": "Reddit Search ",
     "title": "Reddit Search Dashboard",
-    "description": "A reddit search dashboard that shows searches all of reddit for term in the past hour/day/week..etc.",
+    "description": "A reddit search dashboard that searches all of reddit for any term in the past hour/day/week..etc. and shows results in a table",
     "created": "June 24, 2022",
     "timestamp": 1656090370303,
     "compatibility": [
