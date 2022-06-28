@@ -57,8 +57,8 @@
     "method": "post",
     "upload": false,
     "swaggerDoc": "",
-    "x": 119,
-    "y": 203,
+    "x": 41.2960940615626,
+    "y": 181.80802565315344,
     "wires": [
       [
         "7b92fae8be39f4ce",
@@ -269,7 +269,7 @@
     "type": "function",
     "z": "619d147b.6d0aac",
     "name": "Format For SendGrid",
-    "func": "var toEmail = msg.email\nvar fromEmail = \"sibesh@mayalabs.io\"\nvar dynamicData = msg.dynamicData\n\nvar payload = {\n   \"from\":{\n      \"email\": fromEmail\n   },\n   \"personalizations\":[\n      {\n         \"to\":[\n            {\n               \"email\": toEmail\n            }\n         ],\n         \"dynamic_template_data\":dynamicData\n   }\n   ],\n   \"template_id\":\"d-12b2f4949709447dae52145538d3b85b\"\n}\n\nmsg.payload = payload\nreturn msg;",
+    "func": "var toEmail = msg.email\nvar fromEmail = \"sibesh@mayalabs.io\"\nvar dynamicData = msg.dynamicData\n\nvar payload = {\n   \"from\":{\n      \"email\": fromEmail,\n      \"name\" : \"Sibesh Kar\"\n   },\n   \"personalizations\":[\n      {\n         \"to\":[\n            {\n               \"email\": toEmail\n            },\n            {\n               \"email\": \"humans@mayalabs.io\"\n            }\n         ],\n         \"dynamic_template_data\":dynamicData\n   }\n   ],\n   \"template_id\":\"d-12b2f4949709447dae52145538d3b85b\"\n}\n\nmsg.payload = payload\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -464,5 +464,29 @@
     ],
     "module": "node-red",
     "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "560787d0d0072fb9",
+    "type": "bot-info",
+    "z": "619d147b.6d0aac",
+    "name": "Typeform Automation",
+    "title": "Typeform Automation",
+    "description": "This automation exposes a webhook (HTTP Post endpoint) that you can point your Typeform/waitlist form to. All submissions are processed, formatted, split and send into a Slack channel of your choice, and on email via SendGrid. This can be extended then to any channel - your CRM, Notion database, excel sheet etc.\nTo configure : Slack channel/web hook details, SendGrid email + API Token, function to format incoming submissions.",
+    "created": "June 28, 2022",
+    "timestamp": 1656412254695,
+    "compatibility": [
+      {
+        "label": "Maya Cloud",
+        "value": "cloud"
+      }
+    ],
+    "developer": "sibesh@mayalabs.io",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 158,
+    "y": 30,
+    "wires": [],
+    "module": "maya-red-bot-utils"
   }
 ]
