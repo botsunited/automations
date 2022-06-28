@@ -28,10 +28,10 @@
     "valid": true,
     "id": "49f4028d452c0235",
     "type": "reddit-credentials",
-    "username": "blackberrycitylights",
-    "user_agent": "blackberrycitylights",
+    "username": "",
+    "user_agent": "",
     "auth_type": "username_password",
-    "name": "blackberrycitylights",
+    "name": "",
     "module": "node-red-contrib-node-reddit",
     "version": "1.0.11"
   },
@@ -192,10 +192,10 @@
     "valid": true,
     "id": "18dd73ffdb49fc2f",
     "type": "reddit-credentials",
-    "username": "lightningmayonnaise",
-    "user_agent": "lightningmayonnaise",
+    "username": "",
+    "user_agent": "",
     "auth_type": "username_password",
-    "name": "lightningmayonnaise",
+    "name": "",
     "module": "node-red-contrib-node-reddit",
     "version": "1.0.11"
   },
@@ -781,13 +781,13 @@
         "type": "str"
       },
       {
-        "label": "you can try asking r/AutomateYourself",
-        "value": "you can try asking r/AutomateYourself",
+        "label": "",
+        "value": "",
         "type": "str"
       },
       {
-        "label": "sounds like a job for r/AutomateYourself",
-        "value": "sounds like a job for r/AutomateYourself",
+        "label": "",
+        "value": "",
         "type": "str"
       }
     ],
@@ -1005,18 +1005,18 @@
     "multiple": false,
     "options": [
       {
-        "label": "you can try asking r/AutomateYourself",
-        "value": "you can try asking r/AutomateYourself",
+        "label": "",
+        "value": "",
         "type": "str"
       },
       {
-        "label": "Check out r/AutomateYourself",
-        "value": "Check out r/AutomateYourself",
+        "label": "",
+        "value": "",
         "type": "str"
       },
       {
-        "label": "sounds like a job for r/AutomateYourself",
-        "value": "sounds like a job for r/AutomateYourself",
+        "label": "",
+        "value": "",
         "type": "str"
       }
     ],
@@ -1204,7 +1204,7 @@
     "submission_source": "subreddit",
     "comment_source": "user",
     "subreddit": "",
-    "user": "blackberrycitylights",
+    "user": "",
     "limit": "1",
     "sort": "hot",
     "time": "hour",
