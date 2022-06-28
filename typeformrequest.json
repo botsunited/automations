@@ -1,0 +1,468 @@
+[
+  {
+    "id": "619d147b.6d0aac",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": "",
+    "_def": {
+      "defaults": {
+        "label": {
+          "value": ""
+        },
+        "disabled": {
+          "value": false
+        },
+        "info": {
+          "value": ""
+        }
+      }
+    },
+    "changed": false,
+    "in": [],
+    "out": [],
+    "module": null,
+    "version": null
+  },
+  {
+    "valid": true,
+    "id": "7d700f14b36b74c0",
+    "type": "function",
+    "z": "619d147b.6d0aac",
+    "name": "Create Slack Notification",
+    "func": "var notification = msg.notification\nvar email = msg.email\nmsg.payload = {\n    \"text\": \"----NEW AUTOMATION REQUEST----\\n\" + \"Email ID: \" + email +  \"\\n\" + JSON.stringify(notification, null, 4),\n    \"channel\": \"#requests\",\n    \"username\": \"Requests Manager\"\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 327.84604628717034,
+    "y": 483.5208830242085,
+    "wires": [
+      [
+        "d513abe31e3adad7",
+        "07f3abc5788ce742"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "2ce503f7ca528ca6",
+    "type": "http in",
+    "z": "619d147b.6d0aac",
+    "name": "Typeform Webhook",
+    "url": "/waitlist",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 119,
+    "y": 203,
+    "wires": [
+      [
+        "7b92fae8be39f4ce",
+        "c84b7ce6e6b6849b",
+        "9547c65ff3cf6e58"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "7b92fae8be39f4ce",
+    "type": "http response",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 400,
+    "y": 160,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "07f3abc5788ce742",
+    "type": "http request",
+    "z": "619d147b.6d0aac",
+    "name": "Send to #requests channel",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "https://hooks.slack.com/services/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",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 540,
+    "y": 340,
+    "wires": [
+      []
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "2e611502bf236cff",
+    "type": "inject",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "{\"text\":\"Hello, world.\",\"channel\":\"#requests\",\"username\":\"webhookbot\"}",
+    "payloadType": "json",
+    "x": 178,
+    "y": 325,
+    "wires": [
+      [
+        "07f3abc5788ce742"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "c84b7ce6e6b6849b",
+    "type": "debug",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 477,
+    "y": 67,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "9ca9f4e55ae6420f",
+    "type": "inject",
+    "z": "619d147b.6d0aac",
+    "name": "Test Typeform Response",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "{\"event_id\":\"01G5HTHTZ28Y939WGR61EF7S64\",\"event_type\":\"form_response\",\"form_response\":{\"form_id\":\"cBaOM123\",\"token\":\"wep163lupng76unewep163pk3e1c6mdy\",\"landed_at\":\"2022-06-14T19:19:57Z\",\"submitted_at\":\"2022-06-14T19:20:23Z\",\"definition\":{\"id\":\"cBaOM123\",\"title\":\"Waitlist\",\"fields\":[{\"id\":\"alPYo6yB6MYP\",\"ref\":\"b58791e0-8755-4858-b4fd-59161d725b65\",\"type\":\"multiple_choice\",\"title\":\"Which of these best describes what you need to automate?\",\"properties\":{},\"allow_multiple_selections\":true,\"allow_other_choice\":true,\"choices\":[{\"id\":\"v13t4B9lQQLe\",\"label\":\"Scraping/navigating the web\"},{\"id\":\"T6DMdtAGbL9L\",\"label\":\"Connecting apps together\"},{\"id\":\"Xl6HKZBMC2EO\",\"label\":\"Automating data entry/spreadsheets\"},{\"id\":\"vAuPLMOeV9lB\",\"label\":\"Triggering a task manually at intervals\"},{\"id\":\"9YNpqGCQhCie\",\"label\":\"Fetching & monitoring data\"},{\"id\":\"07ugTu6rz9So\",\"label\":\"Custom internal dashboards\"},{\"id\":\"cEJ0eOjrP8YU\",\"label\":\"Platform bots\"}]},{\"id\":\"H6ytRXO0GXAc\",\"ref\":\"12101441-e0cc-4faf-b4b7-6e36ca2abccb\",\"type\":\"short_text\",\"title\":\"Help us understand which applications/platforms you need automating. \",\"properties\":{}},{\"id\":\"8tXg0WqToPKX\",\"ref\":\"0e1d3d6b-fa92-4ce1-aed2-b71b61b99c00\",\"type\":\"multiple_choice\",\"title\":\"How often does it need to run?\",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"qtCG8l1PtcKn\",\"label\":\"Triggered manually\"},{\"id\":\"ZFcsRPInoQ6d\",\"label\":\"Repeated at fixed intervals (hourly/daily/weekly)\"},{\"id\":\"1eX1tXV1HD3i\",\"label\":\"Always listening (event-driven webhooks)\"}]},{\"id\":\"yEbLstmzOV6G\",\"ref\":\"2641230b-c762-4dcc-8577-0c61734a3bec\",\"type\":\"multiple_choice\",\"title\":\"Where do you want it to run?\",\"properties\":{},\"allow_multiple_selections\":true,\"allow_other_choice\":true,\"choices\":[{\"id\":\"UBR5TTi1mP0Q\",\"label\":\"Online Cloud\"},{\"id\":\"82utplUbfAaW\",\"label\":\"MacOS Desktop\"},{\"id\":\"tfkQpio2XDA7\",\"label\":\"Windows Desktop\"},{\"id\":\"ZEJPViim8xMo\",\"label\":\"Linux Desktop\"},{\"id\":\"qBldbgr31szr\",\"label\":\"IoT Device\"}]},{\"id\":\"SgTAbYkCbJOu\",\"ref\":\"d00e15c7-df86-4349-baad-33de76f46674\",\"type\":\"multiple_choice\",\"title\":\"How quickly do you want this to be built? \",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"k3NT3FFFHE70\",\"label\":\"< 1 day\"},{\"id\":\"WZElTGOzNz23\",\"label\":\"1-2 days\"},{\"id\":\"qw5QYyo5TLne\",\"label\":\"4-5 days\"},{\"id\":\"UIqzWFFIuVDk\",\"label\":\"> 1 week\"}]},{\"id\":\"NfSIFbhzHhn6\",\"ref\":\"1b1b1824-977d-4504-b9c4-23fd69a153d0\",\"type\":\"multiple_choice\",\"title\":\"We're almost done! Any more details/context you wish to provide?\",\"properties\":{},\"choices\":[{\"id\":\"DHSxLBXKWRpL\",\"label\":\"Yes, right away\"},{\"id\":\"oBX6SB9czMLB\",\"label\":\"Maybe later\"}]},{\"id\":\"FitRKy96URLd\",\"ref\":\"6d1859b2-68b6-4d05-adc2-0b69253219af\",\"type\":\"email\",\"title\":\"What is the email you use for work? \\\\*\",\"properties\":{}},{\"id\":\"C0wX1xfLOIcb\",\"ref\":\"c1c589b2-0a83-4ce0-bc8d-7110d282d266\",\"type\":\"multiple_choice\",\"title\":\"Which best aligns with the kind of job or role you have?\",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"b9pafsBuAivf\",\"label\":\"Founder\"},{\"id\":\"dGKB7A7O1mwt\",\"label\":\"Product / Engineering / Data Science\"},{\"id\":\"U8oALC6p22qS\",\"label\":\"Leadership / Executive / Investor\"},{\"id\":\"4YAQZq9hjuOw\",\"label\":\"Sales / Customer success / Biz Dev\"},{\"id\":\"2mWGmGo5VY83\",\"label\":\"Marketing / Advertising\"},{\"id\":\"sXuoPQAoqIA0\",\"label\":\"Design / Creative\"},{\"id\":\"zmPzRVcDjzOy\",\"label\":\"Finance / Strategy / Operations\"},{\"id\":\"pBY5cPg9WPKZ\",\"label\":\"HR / People operations\"},{\"id\":\"rKB6SXVY5Gpb\",\"label\":\"Student\"}]},{\"id\":\"JWzFKVu8uSiS\",\"ref\":\"3dce5ba6-801b-4293-a87c-b19deac7345e\",\"type\":\"multiple_choice\",\"title\":\"How big is your team?\",\"properties\":{},\"choices\":[{\"id\":\"JBqZUOLSrHFL\",\"label\":\"Just me\"},{\"id\":\"M1zz9e1mSmLy\",\"label\":\"1-10 members\"},{\"id\":\"AxtavV2pIB52\",\"label\":\"10-50 members\"},{\"id\":\"LLquqj5niH8j\",\"label\":\"50-100 members\"},{\"id\":\"FKnYip2vhVuQ\",\"label\":\"100-500 members\"},{\"id\":\"NmQkCYlYgkWQ\",\"label\":\"> 500 members\"}]}]},\"answers\":[{\"type\":\"choices\",\"choices\":{\"labels\":[\"Connecting apps together\",\"Scraping/navigating the web\"]},\"field\":{\"id\":\"alPYo6yB6MYP\",\"type\":\"multiple_choice\",\"ref\":\"b58791e0-8755-4858-b4fd-59161d725b65\"}},{\"type\":\"text\",\"text\":\"Reddit, Github, Testing\",\"field\":{\"id\":\"H6ytRXO0GXAc\",\"type\":\"short_text\",\"ref\":\"12101441-e0cc-4faf-b4b7-6e36ca2abccb\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Triggered manually\"},\"field\":{\"id\":\"8tXg0WqToPKX\",\"type\":\"multiple_choice\",\"ref\":\"0e1d3d6b-fa92-4ce1-aed2-b71b61b99c00\"}},{\"type\":\"choices\",\"choices\":{\"labels\":[\"Online Cloud\",\"MacOS Desktop\"]},\"field\":{\"id\":\"yEbLstmzOV6G\",\"type\":\"multiple_choice\",\"ref\":\"2641230b-c762-4dcc-8577-0c61734a3bec\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"1-2 days\"},\"field\":{\"id\":\"SgTAbYkCbJOu\",\"type\":\"multiple_choice\",\"ref\":\"d00e15c7-df86-4349-baad-33de76f46674\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Maybe later\"},\"field\":{\"id\":\"NfSIFbhzHhn6\",\"type\":\"multiple_choice\",\"ref\":\"1b1b1824-977d-4504-b9c4-23fd69a153d0\"}},{\"type\":\"email\",\"email\":\"sibesh@sib.com\",\"field\":{\"id\":\"FitRKy96URLd\",\"type\":\"email\",\"ref\":\"6d1859b2-68b6-4d05-adc2-0b69253219af\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Founder\"},\"field\":{\"id\":\"C0wX1xfLOIcb\",\"type\":\"multiple_choice\",\"ref\":\"c1c589b2-0a83-4ce0-bc8d-7110d282d266\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"10-50 members\"},\"field\":{\"id\":\"JWzFKVu8uSiS\",\"type\":\"multiple_choice\",\"ref\":\"3dce5ba6-801b-4293-a87c-b19deac7345e\"}}]}}",
+    "payloadType": "json",
+    "x": 129,
+    "y": 260,
+    "wires": [
+      []
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "9547c65ff3cf6e58",
+    "type": "function",
+    "z": "619d147b.6d0aac",
+    "name": "Q&A Format",
+    "func": "questions = msg.payload.form_response.definition.fields.map((field, i) => field.title)\n\nanswers = msg.payload.form_response.answers\nemail = null\n\nfunction getAnswerString(quest, i){\n    var q = quest;\n    var answerObj = answers[i];\n    var answer = null\n    switch (answerObj.type) {\n        case \"choices\" : \n            answer = answerObj.choices.labels.join(\",\");\n            break;\n        case \"choice\" : \n            answer = answerObj.choice.label;\n            break;\n        case \"text\" : \n            answer = answerObj.text;\n            break;\n        case \"email\" : \n            answer = answerObj.email;\n            email = answerObj.email\n            break;\n        case \"file_url\" : \n            answer = answerObj.file_url;\n            break;\n        default : \n            answer = answerObj;\n            break;\n    }\n    return {\n        id : answerObj.field.id,\n        q : quest,\n        a : answer\n    }\n}\n\nquestAns = questions.map(getAnswerString)\n\nmsg.notification = questAns\nmsg.email = email\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 350,
+    "y": 620,
+    "wires": [
+      [
+        "dbfeeca68344e05a",
+        "7d700f14b36b74c0"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "28549175cf621d44",
+    "type": "http request",
+    "z": "619d147b.6d0aac",
+    "name": "Send Email to User Now",
+    "method": "POST",
+    "ret": "obj",
+    "paytoqs": "body",
+    "url": "https://api.sendgrid.com/v3/mail/send",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "bearer",
+    "x": 650,
+    "y": 1000,
+    "wires": [
+      []
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "d577e341ff4df1b4",
+    "type": "inject",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 125.51242385903477,
+    "y": 972.9919462461888,
+    "wires": [
+      [
+        "a52b1f36d767482a"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "a52b1f36d767482a",
+    "type": "function",
+    "z": "619d147b.6d0aac",
+    "name": "Format For SendGrid",
+    "func": "var toEmail = msg.email\nvar fromEmail = \"sibesh@mayalabs.io\"\nvar dynamicData = msg.dynamicData\n\nvar payload = {\n   \"from\":{\n      \"email\": fromEmail\n   },\n   \"personalizations\":[\n      {\n         \"to\":[\n            {\n               \"email\": toEmail\n            }\n         ],\n         \"dynamic_template_data\":dynamicData\n   }\n   ],\n   \"template_id\":\"d-12b2f4949709447dae52145538d3b85b\"\n}\n\nmsg.payload = payload\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 860,
+    "wires": [
+      [
+        "28549175cf621d44"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "d513abe31e3adad7",
+    "type": "debug",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 770,
+    "y": 480,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "4079fb78086dbda6",
+    "type": "http request",
+    "z": "619d147b.6d0aac",
+    "name": "Send to #growth channel",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "https://hooks.slack.com/services/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",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 610,
+    "y": 400,
+    "wires": [
+      []
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "dbfeeca68344e05a",
+    "type": "function",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "func": "notification = msg.notification\n\nvar keyValue = {}\n\nnotification.forEach(item => {\n    keyValue[item[\"id\"]] = item[\"a\"]\n\n})\n\nvar dynamicData = {\n    \"a1\" : keyValue[\"alPYo6yB6MYP\"],\n    \"a2\" : keyValue[\"H6ytRXO0GXAc\"],\n    \"a3\" : keyValue[\"8tXg0WqToPKX\"],\n    \"a4\" : keyValue[\"N1sofZ9bUIUJ\"]? keyValue[\"N1sofZ9bUIUJ\"] : \"N/A\",\n    \"a5\" : keyValue[\"yEbLstmzOV6G\"],\n    \"a6\" : keyValue[\"SgTAbYkCbJOu\"],\n    \"a7\" : keyValue[\"NfSIFbhzHhn6\"],\n    \"a8\" : keyValue[\"0B526KnMlkQj\"]? keyValue[\"0B526KnMlkQj\"] : \"N/A\",\n    \"a9\" : keyValue[\"A1N0Ujb2cNM7\"]? keyValue[\"A1N0Ujb2cNM7\"] : \"N/A\",\n    \n}\nmsg.dynamicData = dynamicData\nmsg.keyValue = keyValue\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 400,
+    "y": 720,
+    "wires": [
+      [
+        "48297a9033fbaf38",
+        "a52b1f36d767482a"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "48297a9033fbaf38",
+    "type": "debug",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "dynamicData",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 703.794663992351,
+    "y": 816.0592322218251,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "44acf84b71ee91e3",
+    "type": "inject",
+    "z": "619d147b.6d0aac",
+    "name": "part response test",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "{\"event_id\":\"01G62WC7JFZM5YRC4THB9WC8Z4\",\"event_type\":\"form_response\",\"form_response\":{\"form_id\":\"cBaOM123\",\"token\":\"y6v3c6cmu1mzpnusaq9y6v3c6zxyh6qd\",\"landed_at\":\"2022-06-21T10:19:01Z\",\"submitted_at\":\"2022-06-21T10:19:22Z\",\"definition\":{\"id\":\"cBaOM123\",\"title\":\"Waitlist\",\"fields\":[{\"id\":\"alPYo6yB6MYP\",\"ref\":\"b58791e0-8755-4858-b4fd-59161d725b65\",\"type\":\"multiple_choice\",\"title\":\"Which of these best describes what you need to automate?\",\"properties\":{},\"allow_multiple_selections\":true,\"allow_other_choice\":true,\"choices\":[{\"id\":\"v13t4B9lQQLe\",\"label\":\"Scraping/navigating the web\"},{\"id\":\"T6DMdtAGbL9L\",\"label\":\"Connecting apps together\"},{\"id\":\"Xl6HKZBMC2EO\",\"label\":\"Automating data entry/spreadsheets\"},{\"id\":\"vAuPLMOeV9lB\",\"label\":\"Triggering a task manually at intervals\"},{\"id\":\"9YNpqGCQhCie\",\"label\":\"Fetching & monitoring data\"},{\"id\":\"07ugTu6rz9So\",\"label\":\"Custom internal dashboards\"},{\"id\":\"cEJ0eOjrP8YU\",\"label\":\"Platform bots\"}]},{\"id\":\"H6ytRXO0GXAc\",\"ref\":\"12101441-e0cc-4faf-b4b7-6e36ca2abccb\",\"type\":\"short_text\",\"title\":\"Help us understand which applications/platforms you need automating. \",\"properties\":{}},{\"id\":\"8tXg0WqToPKX\",\"ref\":\"0e1d3d6b-fa92-4ce1-aed2-b71b61b99c00\",\"type\":\"multiple_choice\",\"title\":\"How does it need to be run?\",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"qtCG8l1PtcKn\",\"label\":\"Triggered manually\"},{\"id\":\"ZFcsRPInoQ6d\",\"label\":\"Repeated at fixed intervals (hourly/daily/weekly)\"},{\"id\":\"1eX1tXV1HD3i\",\"label\":\"Always listening (event-driven webhooks)\"}]},{\"id\":\"yEbLstmzOV6G\",\"ref\":\"2641230b-c762-4dcc-8577-0c61734a3bec\",\"type\":\"multiple_choice\",\"title\":\"Where do you want it to run?\",\"properties\":{},\"allow_multiple_selections\":true,\"allow_other_choice\":true,\"choices\":[{\"id\":\"UBR5TTi1mP0Q\",\"label\":\"Online Cloud\"},{\"id\":\"82utplUbfAaW\",\"label\":\"MacOS Desktop\"},{\"id\":\"tfkQpio2XDA7\",\"label\":\"Windows Desktop\"},{\"id\":\"ZEJPViim8xMo\",\"label\":\"Linux Desktop\"},{\"id\":\"qBldbgr31szr\",\"label\":\"IoT Device\"}]},{\"id\":\"SgTAbYkCbJOu\",\"ref\":\"d00e15c7-df86-4349-baad-33de76f46674\",\"type\":\"multiple_choice\",\"title\":\"How quickly do you want this to be built? \",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"k3NT3FFFHE70\",\"label\":\"< 1 day\"},{\"id\":\"WZElTGOzNz23\",\"label\":\"1-2 days\"},{\"id\":\"qw5QYyo5TLne\",\"label\":\"4-5 days\"},{\"id\":\"UIqzWFFIuVDk\",\"label\":\"> 1 week\"}]},{\"id\":\"NfSIFbhzHhn6\",\"ref\":\"1b1b1824-977d-4504-b9c4-23fd69a153d0\",\"type\":\"multiple_choice\",\"title\":\"We're almost done! Any more details/context you wish to provide?\",\"properties\":{},\"choices\":[{\"id\":\"DHSxLBXKWRpL\",\"label\":\"Yes, right away\"},{\"id\":\"oBX6SB9czMLB\",\"label\":\"Maybe later\"}]},{\"id\":\"FitRKy96URLd\",\"ref\":\"6d1859b2-68b6-4d05-adc2-0b69253219af\",\"type\":\"email\",\"title\":\"What is the email you use for work? \\\\*\",\"properties\":{}},{\"id\":\"C0wX1xfLOIcb\",\"ref\":\"c1c589b2-0a83-4ce0-bc8d-7110d282d266\",\"type\":\"multiple_choice\",\"title\":\"Which best aligns with the kind of job or role you have?\",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"b9pafsBuAivf\",\"label\":\"Founder\"},{\"id\":\"dGKB7A7O1mwt\",\"label\":\"Product / Engineering / Data Science\"},{\"id\":\"U8oALC6p22qS\",\"label\":\"Leadership / Executive / Investor\"},{\"id\":\"4YAQZq9hjuOw\",\"label\":\"Sales / Customer success / Biz Dev\"},{\"id\":\"2mWGmGo5VY83\",\"label\":\"Marketing / Advertising\"},{\"id\":\"sXuoPQAoqIA0\",\"label\":\"Design / Creative\"},{\"id\":\"zmPzRVcDjzOy\",\"label\":\"Finance / Strategy / Operations\"},{\"id\":\"pBY5cPg9WPKZ\",\"label\":\"HR / People operations\"},{\"id\":\"rKB6SXVY5Gpb\",\"label\":\"Student\"}]},{\"id\":\"JWzFKVu8uSiS\",\"ref\":\"3dce5ba6-801b-4293-a87c-b19deac7345e\",\"type\":\"multiple_choice\",\"title\":\"How big is your team?\",\"properties\":{},\"choices\":[{\"id\":\"JBqZUOLSrHFL\",\"label\":\"Just me\"},{\"id\":\"M1zz9e1mSmLy\",\"label\":\"1-10 members\"},{\"id\":\"AxtavV2pIB52\",\"label\":\"10-50 members\"},{\"id\":\"LLquqj5niH8j\",\"label\":\"50-100 members\"},{\"id\":\"FKnYip2vhVuQ\",\"label\":\"100-500 members\"},{\"id\":\"NmQkCYlYgkWQ\",\"label\":\"> 500 members\"}]}]},\"answers\":[{\"type\":\"choices\",\"choices\":{\"labels\":[\"Triggering a task manually at intervals\",\"Fetching & monitoring data\"]},\"field\":{\"id\":\"alPYo6yB6MYP\",\"type\":\"multiple_choice\",\"ref\":\"b58791e0-8755-4858-b4fd-59161d725b65\"}},{\"type\":\"text\",\"text\":\"random\",\"field\":{\"id\":\"H6ytRXO0GXAc\",\"type\":\"short_text\",\"ref\":\"12101441-e0cc-4faf-b4b7-6e36ca2abccb\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Triggered manually\"},\"field\":{\"id\":\"8tXg0WqToPKX\",\"type\":\"multiple_choice\",\"ref\":\"0e1d3d6b-fa92-4ce1-aed2-b71b61b99c00\"}},{\"type\":\"choices\",\"choices\":{\"labels\":[\"MacOS Desktop\",\"Online Cloud\"]},\"field\":{\"id\":\"yEbLstmzOV6G\",\"type\":\"multiple_choice\",\"ref\":\"2641230b-c762-4dcc-8577-0c61734a3bec\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"< 1 day\"},\"field\":{\"id\":\"SgTAbYkCbJOu\",\"type\":\"multiple_choice\",\"ref\":\"d00e15c7-df86-4349-baad-33de76f46674\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Maybe later\"},\"field\":{\"id\":\"NfSIFbhzHhn6\",\"type\":\"multiple_choice\",\"ref\":\"1b1b1824-977d-4504-b9c4-23fd69a153d0\"}},{\"type\":\"email\",\"email\":\"sibesh@mayahq.com\",\"field\":{\"id\":\"FitRKy96URLd\",\"type\":\"email\",\"ref\":\"6d1859b2-68b6-4d05-adc2-0b69253219af\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Product / Engineering / Data Science\"},\"field\":{\"id\":\"C0wX1xfLOIcb\",\"type\":\"multiple_choice\",\"ref\":\"c1c589b2-0a83-4ce0-bc8d-7110d282d266\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"10-50 members\"},\"field\":{\"id\":\"JWzFKVu8uSiS\",\"type\":\"multiple_choice\",\"ref\":\"3dce5ba6-801b-4293-a87c-b19deac7345e\"}}]}}",
+    "payloadType": "json",
+    "x": 140,
+    "y": 580,
+    "wires": [
+      [
+        "9547c65ff3cf6e58"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "15a58edae2841350",
+    "type": "inject",
+    "z": "619d147b.6d0aac",
+    "name": "full response test",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "{\"event_id\":\"01G62XEBPMYZZGGSR9PMZNFWM2\",\"event_type\":\"form_response\",\"form_response\":{\"form_id\":\"cBaOM123\",\"token\":\"lujhhp5qih8z7k7c2mjlujhhp52qwldx\",\"landed_at\":\"2022-06-21T10:36:55Z\",\"submitted_at\":\"2022-06-21T10:38:00Z\",\"definition\":{\"id\":\"cBaOM123\",\"title\":\"Waitlist\",\"fields\":[{\"id\":\"alPYo6yB6MYP\",\"ref\":\"b58791e0-8755-4858-b4fd-59161d725b65\",\"type\":\"multiple_choice\",\"title\":\"Which of these best describes what you need to automate?\",\"properties\":{},\"allow_multiple_selections\":true,\"allow_other_choice\":true,\"choices\":[{\"id\":\"v13t4B9lQQLe\",\"label\":\"Scraping/navigating the web\"},{\"id\":\"T6DMdtAGbL9L\",\"label\":\"Connecting apps together\"},{\"id\":\"Xl6HKZBMC2EO\",\"label\":\"Automating data entry/spreadsheets\"},{\"id\":\"vAuPLMOeV9lB\",\"label\":\"Triggering a task manually at intervals\"},{\"id\":\"9YNpqGCQhCie\",\"label\":\"Fetching & monitoring data\"},{\"id\":\"07ugTu6rz9So\",\"label\":\"Custom internal dashboards\"},{\"id\":\"cEJ0eOjrP8YU\",\"label\":\"Platform bots\"}]},{\"id\":\"H6ytRXO0GXAc\",\"ref\":\"12101441-e0cc-4faf-b4b7-6e36ca2abccb\",\"type\":\"short_text\",\"title\":\"Help us understand which applications/platforms you need automating. \",\"properties\":{}},{\"id\":\"8tXg0WqToPKX\",\"ref\":\"0e1d3d6b-fa92-4ce1-aed2-b71b61b99c00\",\"type\":\"multiple_choice\",\"title\":\"How does it need to be run?\",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"qtCG8l1PtcKn\",\"label\":\"Triggered manually\"},{\"id\":\"ZFcsRPInoQ6d\",\"label\":\"Repeated at fixed intervals (hourly/daily/weekly)\"},{\"id\":\"1eX1tXV1HD3i\",\"label\":\"Always listening (event-driven webhooks)\"}]},{\"id\":\"N1sofZ9bUIUJ\",\"ref\":\"894ef606-5c05-4b99-802b-635645c22f4f\",\"type\":\"multiple_choice\",\"title\":\"Sweet. Frequency?\",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"iROpja19gOhX\",\"label\":\"Every few seconds\"},{\"id\":\"hMsDf8RIpBOl\",\"label\":\"Hourly\"},{\"id\":\"0ab5iuFwHuVg\",\"label\":\"Daily\"},{\"id\":\"Ycj3j0nSh4XX\",\"label\":\"Weekly\"},{\"id\":\"YIvnKEqQnIV4\",\"label\":\"Monthly\"}]},{\"id\":\"yEbLstmzOV6G\",\"ref\":\"2641230b-c762-4dcc-8577-0c61734a3bec\",\"type\":\"multiple_choice\",\"title\":\"Where do you want it to run?\",\"properties\":{},\"allow_multiple_selections\":true,\"allow_other_choice\":true,\"choices\":[{\"id\":\"UBR5TTi1mP0Q\",\"label\":\"Online Cloud\"},{\"id\":\"82utplUbfAaW\",\"label\":\"MacOS Desktop\"},{\"id\":\"tfkQpio2XDA7\",\"label\":\"Windows Desktop\"},{\"id\":\"ZEJPViim8xMo\",\"label\":\"Linux Desktop\"},{\"id\":\"qBldbgr31szr\",\"label\":\"IoT Device\"}]},{\"id\":\"SgTAbYkCbJOu\",\"ref\":\"d00e15c7-df86-4349-baad-33de76f46674\",\"type\":\"multiple_choice\",\"title\":\"How quickly do you want this to be built? \",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"k3NT3FFFHE70\",\"label\":\"< 1 day\"},{\"id\":\"WZElTGOzNz23\",\"label\":\"1-2 days\"},{\"id\":\"qw5QYyo5TLne\",\"label\":\"4-5 days\"},{\"id\":\"UIqzWFFIuVDk\",\"label\":\"> 1 week\"}]},{\"id\":\"NfSIFbhzHhn6\",\"ref\":\"1b1b1824-977d-4504-b9c4-23fd69a153d0\",\"type\":\"multiple_choice\",\"title\":\"We're almost done! Any more details/context you wish to provide?\",\"properties\":{},\"choices\":[{\"id\":\"DHSxLBXKWRpL\",\"label\":\"Yes, right away\"},{\"id\":\"oBX6SB9czMLB\",\"label\":\"Maybe later\"}]},{\"id\":\"0B526KnMlkQj\",\"ref\":\"7c745c53-8cc6-428f-8de0-2d048295fc9d\",\"type\":\"long_text\",\"title\":\"Add a few lines of text describing the steps to automate.\",\"properties\":{}},{\"id\":\"A1N0Ujb2cNM7\",\"ref\":\"4cfd3292-c1fd-443c-a8b5-dcc90bab6120\",\"type\":\"file_upload\",\"title\":\"Feel free to add any images or videos that might help. \",\"properties\":{}},{\"id\":\"FitRKy96URLd\",\"ref\":\"6d1859b2-68b6-4d05-adc2-0b69253219af\",\"type\":\"email\",\"title\":\"What is the email you use for work? \\\\*\",\"properties\":{}},{\"id\":\"C0wX1xfLOIcb\",\"ref\":\"c1c589b2-0a83-4ce0-bc8d-7110d282d266\",\"type\":\"multiple_choice\",\"title\":\"Which best aligns with the kind of job or role you have?\",\"properties\":{},\"allow_other_choice\":true,\"choices\":[{\"id\":\"b9pafsBuAivf\",\"label\":\"Founder\"},{\"id\":\"dGKB7A7O1mwt\",\"label\":\"Product / Engineering / Data Science\"},{\"id\":\"U8oALC6p22qS\",\"label\":\"Leadership / Executive / Investor\"},{\"id\":\"4YAQZq9hjuOw\",\"label\":\"Sales / Customer success / Biz Dev\"},{\"id\":\"2mWGmGo5VY83\",\"label\":\"Marketing / Advertising\"},{\"id\":\"sXuoPQAoqIA0\",\"label\":\"Design / Creative\"},{\"id\":\"zmPzRVcDjzOy\",\"label\":\"Finance / Strategy / Operations\"},{\"id\":\"pBY5cPg9WPKZ\",\"label\":\"HR / People operations\"},{\"id\":\"rKB6SXVY5Gpb\",\"label\":\"Student\"}]},{\"id\":\"JWzFKVu8uSiS\",\"ref\":\"3dce5ba6-801b-4293-a87c-b19deac7345e\",\"type\":\"multiple_choice\",\"title\":\"How big is your team?\",\"properties\":{},\"choices\":[{\"id\":\"JBqZUOLSrHFL\",\"label\":\"Just me\"},{\"id\":\"M1zz9e1mSmLy\",\"label\":\"1-10 members\"},{\"id\":\"AxtavV2pIB52\",\"label\":\"10-50 members\"},{\"id\":\"LLquqj5niH8j\",\"label\":\"50-100 members\"},{\"id\":\"FKnYip2vhVuQ\",\"label\":\"100-500 members\"},{\"id\":\"NmQkCYlYgkWQ\",\"label\":\"> 500 members\"}]}]},\"answers\":[{\"type\":\"choices\",\"choices\":{\"labels\":[\"Scraping/navigating the web\",\"Connecting apps together\"]},\"field\":{\"id\":\"alPYo6yB6MYP\",\"type\":\"multiple_choice\",\"ref\":\"b58791e0-8755-4858-b4fd-59161d725b65\"}},{\"type\":\"text\",\"text\":\"Github, Reddit\",\"field\":{\"id\":\"H6ytRXO0GXAc\",\"type\":\"short_text\",\"ref\":\"12101441-e0cc-4faf-b4b7-6e36ca2abccb\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Repeated at fixed intervals (hourly/daily/weekly)\"},\"field\":{\"id\":\"8tXg0WqToPKX\",\"type\":\"multiple_choice\",\"ref\":\"0e1d3d6b-fa92-4ce1-aed2-b71b61b99c00\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Every few seconds\"},\"field\":{\"id\":\"N1sofZ9bUIUJ\",\"type\":\"multiple_choice\",\"ref\":\"894ef606-5c05-4b99-802b-635645c22f4f\"}},{\"type\":\"choices\",\"choices\":{\"labels\":[\"Online Cloud\",\"MacOS Desktop\"]},\"field\":{\"id\":\"yEbLstmzOV6G\",\"type\":\"multiple_choice\",\"ref\":\"2641230b-c762-4dcc-8577-0c61734a3bec\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"1-2 days\"},\"field\":{\"id\":\"SgTAbYkCbJOu\",\"type\":\"multiple_choice\",\"ref\":\"d00e15c7-df86-4349-baad-33de76f46674\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Yes, right away\"},\"field\":{\"id\":\"NfSIFbhzHhn6\",\"type\":\"multiple_choice\",\"ref\":\"1b1b1824-977d-4504-b9c4-23fd69a153d0\"}},{\"type\":\"text\",\"text\":\"Just testing\",\"field\":{\"id\":\"0B526KnMlkQj\",\"type\":\"long_text\",\"ref\":\"7c745c53-8cc6-428f-8de0-2d048295fc9d\"}},{\"type\":\"file_url\",\"file_url\":\"https://api.typeform.com/responses/files/ea23bdf93d0fbf036ec0489c0084b5bbe11c8b50f1553e99938619fb99ff809a/botdoggy.jpeg\",\"field\":{\"id\":\"A1N0Ujb2cNM7\",\"type\":\"file_upload\",\"ref\":\"4cfd3292-c1fd-443c-a8b5-dcc90bab6120\"}},{\"type\":\"email\",\"email\":\"sibesh@mayahq.com\",\"field\":{\"id\":\"FitRKy96URLd\",\"type\":\"email\",\"ref\":\"6d1859b2-68b6-4d05-adc2-0b69253219af\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"Product / Engineering / Data Science\"},\"field\":{\"id\":\"C0wX1xfLOIcb\",\"type\":\"multiple_choice\",\"ref\":\"c1c589b2-0a83-4ce0-bc8d-7110d282d266\"}},{\"type\":\"choice\",\"choice\":{\"label\":\"10-50 members\"},\"field\":{\"id\":\"JWzFKVu8uSiS\",\"type\":\"multiple_choice\",\"ref\":\"3dce5ba6-801b-4293-a87c-b19deac7345e\"}}]}}",
+    "payloadType": "json",
+    "x": 130,
+    "y": 720,
+    "wires": [
+      [
+        "9547c65ff3cf6e58"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "abb5c6a4448eaf67",
+    "type": "inject",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "{\"channel\":\"#requests\",\"username\":\"webhookbot\",\"text\":\"New Waitlist Request!\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"Danny Torrence left the following review for your property:\"}},{\"type\":\"section\",\"block_id\":\"section567\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"<https://example.com|Overlook Hotel> \\n :star: \\n Doors had too many axe holes, guest in room 237 was far too rowdy, whole place felt stuck in the 1920s.\"},\"accessory\":{\"type\":\"image\",\"image_url\":\"https://is5-ssl.mzstatic.com/image/thumb/Purple3/v4/d3/72/5c/d3725c8f-c642-5d69-1904-aa36e4297885/source/256x256bb.jpg\",\"alt_text\":\"Haunted hotel image\"}},{\"type\":\"section\",\"block_id\":\"section789\",\"fields\":[{\"type\":\"mrkdwn\",\"text\":\"*Average Rating*\\n1.0\"}]}]}",
+    "payloadType": "json",
+    "x": 160,
+    "y": 440,
+    "wires": [
+      [
+        "07f3abc5788ce742"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  }
+]
