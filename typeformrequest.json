@@ -472,7 +472,7 @@
     "z": "619d147b.6d0aac",
     "name": "Typeform Automation",
     "title": "Typeform Automation",
-    "description": "This automation exposes a webhook (HTTP Post endpoint) that you can point your Typeform/waitlist form to. All submissions are processed, formatted, split and send into a Slack channel of your choice, and on email via SendGrid. This can be extended then to any channel - your CRM, Notion database, excel sheet etc.\n\nTo configure : Slack channel/web hook details, SendGrid email + API Token, function to format incoming submissions.",
+    "description": "This automation exposes a webhook (HTTP Post endpoint) that you can point your Typeform/waitlist form to. All submissions are processed, formatted, split and send into a Slack channel of your choice, and on email via SendGrid. This can be extended then to any channel - your CRM, Notion database, excel sheet etc.\n\n- To configure : Slack channel/web hook details, SendGrid email + API Token, function to format incoming submissions.",
     "created": "June 28, 2022",
     "timestamp": 1656412254695,
     "compatibility": [
